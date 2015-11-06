@@ -2,7 +2,7 @@
 
 ## Usage
 
-`meteor add panter:keypress' 
+`meteor add panter:keypress`
 
 Now, you can use:
 
