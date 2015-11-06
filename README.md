@@ -35,8 +35,3 @@ The function only returns true, if the exact key-combination is pressed.
 E.g. `Keypress.is(Keypress.Keys.c, {ctrlKey: true, altKey: true})` will only return true
 if ctrl+alt+c is pressed, but not when ctrl+c or alt+c is pressed.
 
-
-
-I
-
-
