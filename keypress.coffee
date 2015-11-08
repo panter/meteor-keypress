@@ -67,7 +67,7 @@
   '9numpad': 105
   'Multiply': 106
   'Plus': 107
-  'Minut': 109
+  'Minus': 109
   'Dot': 110
   'Slash1': 111
   'F1': 112
@@ -82,8 +82,8 @@
   'F10': 121
   'F11': 122
   'F12': 123
-  'equal': 187
-  'Coma': 188
+  'Equal': 187
+  'Comma': 188
   'Slash': 191
   'Backslash': 220
 
