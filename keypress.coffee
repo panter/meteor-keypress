@@ -99,20 +99,20 @@ store = new ReactiveDict('KEYPRESS')
 
 Meteor.startup ->
   $(document).on 'keydown', (event) ->
-    store.set STORE_KEY, createValue event.which, event
+    store.set event.which, createValue event.which, event.modifiers, true
 
   $(document).on 'keyup', (event) ->
-    store.set STORE_KEY, null
+    store.set event.which, createValue event.which, event.modifiers, false
 
 
-@Keypress.get = -> store.get(STORE_KEY)
 
 @Keypress.is = (keyCode, modifiers) ->
-  store.equals STORE_KEY, createValue keyCode, modifiers
+  value = createValue keyCode, modifiers
+  store.equals keyCode, value
 
 
-createValue = (keyCode, modifiers) ->
-  value = "#{keyCode}"
+createValue = (keyCode, modifiers, pressed = true) ->
+  value = if pressed then 1 else 0
   if modifiers?
     for eventKey, modifierKeyCode of allModifiers
       # when only a modifier is pressed, it should only set the keycode, not the modifier also
