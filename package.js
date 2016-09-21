@@ -16,7 +16,7 @@ Package.onUse(function(api) {
   api.use(['reactive-dict'], 'client');
   api.versionsFrom('1.1.0.3');
   api.addFiles('keypress.coffee', 'client');
-  api.export("keypress");
+  api.export("Keypress");
 });
 
 
