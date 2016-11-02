@@ -1,5 +1,5 @@
-@Keypress = {}
-@Keypress.Keys =
+Keypress = {}
+Keypress.Keys =
   'Backspace': 8
   'Tab': 9
   'Enter': 13
@@ -98,15 +98,14 @@ STORE_KEY = 'key'
 store = new ReactiveDict('KEYPRESS')
 
 Meteor.startup ->
-  $(document).on 'keydown', (event) ->
+  addEvent document, 'keydown', (event) ->
     store.set event.which, createValue event.which, event.modifiers, true
-
-  $(document).on 'keyup', (event) ->
+  addEvent document, 'keyup', (event) ->
     store.set event.which, createValue event.which, event.modifiers, false
 
 
 
-@Keypress.is = (keyCode, modifiers) ->
+Keypress.is = (keyCode, modifiers) ->
   value = createValue keyCode, modifiers
   store.equals keyCode, value
 
@@ -119,3 +118,13 @@ createValue = (keyCode, modifiers, pressed = true) ->
       if modifiers[eventKey] and keyCode isnt modifierKeyCode
         value += "_#{eventKey}"
   return value
+
+addEvent = (element, eventName, callback) ->
+  if element.addEventListener
+    element.addEventListener eventName, callback, false
+  else if element.attachEvent
+    element.attachEvent 'on' + eventName, callback
+
+
+# export
+@Keypress = Keypress
